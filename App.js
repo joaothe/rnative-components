@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import React, {Component} from 'react'
+import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native'
 
 export default class App extends Component {
 
@@ -7,21 +7,27 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      name: 'joao'
+      texto: '',
+      textoInput: ''
     }
+
+    this.sendVal = this.sendVal.bind(this)
+
   }
 
-  getName = (value) => {
-    this.setState({name: value})
+  sendVal() {
+    alert("olá")
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input} placeholder="Name"
-          onChangeText={this.getName}
-          underlineColorAndroid="transparent" />
-        <Text style={styles.textStyled}>{this.state.name}</Text>
+        <TextInput style={styles.input} underlineColorAndroid="transparent" placeholder="Digite seu nome..." />
+
+        <Button title="Aperte" onPress={this.sendVal} />
+        
+        <Text style={styles.styledText}></Text>
+
       </View>
     );
   }
@@ -38,9 +44,10 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 10
   },
-  textStyled: {
+  styledText: {
+    marginTop: 15,
+    fontSize: 23,
     textAlign: 'center',
-    fontSize: 17,
     color: '#000000'
   }
 })
