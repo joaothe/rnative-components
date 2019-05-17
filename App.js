@@ -45,13 +45,27 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      texto: '',
+      textoFrase: ''
     }
+
+    this.frases = [
+      "acredite em você",
+      "aproveite a vida",
+      "dedique-se",
+      "sonhe grande"
+    ]
 
   }
 
   quebrarBiscoito = () => {
-    alert("Biscoito quebrado")
+    let state = this.state
+
+    let numeroAleatorio = Math.floor(Math.random() * this.frases.length)
+
+    state.textoFrase = this.frases[numeroAleatorio]
+
+    this.setState(state)
+
   }
 
   render() {
@@ -60,7 +74,7 @@ export default class App extends Component {
 
         <Image source={require('./src/biscoito.png')} style={styles.img} />
 
-        <Text style={styles.textoFrase}>Frase</Text>
+        <Text style={styles.textoFrase}>{this.state.textoFrase}</Text>
 
         <StyledButton cor="#dd7b22" nome="Quebrar Biscoito" onPress={this.quebrarBiscoito} />
 
