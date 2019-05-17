@@ -1,5 +1,43 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native'
+import {Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native'
+
+class StyledButton extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.styles = StyleSheet.create({
+      botao: {
+        width: 230,
+        height: 50,
+        borderWidth: 2,
+        borderColor: props.cor,
+        borderRadius: 25
+      },
+      btnArea: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      btnTexto: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: props.cor
+      }
+    })
+  }
+
+  render() {
+    return(
+      <TouchableOpacity style={this.styles.botao} onPress={this.props.onPress}>
+        <View style={this.styles.btnArea}>
+          <Text style={this.styles.btnTexto}>{this.props.nome}</Text>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+}
 
 export default class App extends Component {
 
@@ -8,25 +46,23 @@ export default class App extends Component {
 
     this.state = {
       texto: '',
-      textoInput: ''
     }
-
-    this.sendVal = this.sendVal.bind(this)
 
   }
 
-  sendVal() {
-    alert("olá")
+  quebrarBiscoito = () => {
+    alert("Biscoito quebrado")
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input} underlineColorAndroid="transparent" placeholder="Digite seu nome..." />
 
-        <Button title="Aperte" onPress={this.sendVal} />
-        
-        <Text style={styles.styledText}></Text>
+        <Image source={require('./src/biscoito.png')} style={styles.img} />
+
+        <Text style={styles.textoFrase}>Frase</Text>
+
+        <StyledButton cor="#dd7b22" nome="Quebrar Biscoito" onPress={this.quebrarBiscoito} />
 
       </View>
     );
@@ -35,19 +71,20 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1
+    flex: 1,
+    paddingTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  input: {
-    height: 45,
-    borderWidth: 1,
-    borderColor: '#000000',
-    margin: 20,
-    padding: 10
+  img: {
+    width: 250,
+    height: 250
   },
-  styledText: {
-    marginTop: 15,
-    fontSize: 23,
+  textoFrase: {
+    fontSize: 20,
+    color: '#dd7b22',
+    margin: 30,
     textAlign: 'center',
-    color: '#000000'
+    fontStyle: 'italic'
   }
 })
