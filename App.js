@@ -1,38 +1,35 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet, View, Text, FlatList} from 'react-native'
+import {Platform, StyleSheet, View, Text, FlatList, Picker} from 'react-native'
 
 export default class App extends Component {
 
   constructor(props) {
     super(props)
-
-    // Flatlist carrega só o que aparece. Vai carregando aos poucos.
-    // Scrowview carrega tudo de uma vez
+    
     this.state = {
-      listaData: [
-        { key: '1', nome: 'Joao', idade: 22 },
-        { key: '2', nome: 'Pedro', idade: 25 },
-        { key: '3', nome: 'Fernando', idade: 35 },
-        { key: '4', nome: 'Lucas', idade: 60 },
-        { key: '5', nome: 'Gustavo', idade: 43 },
-        { key: '6', nome: 'Marcelo', idade: 51 }
+      pizza: 0,
+      pizzas: [
+        { nome: 'pepperoni', valor: 40},
+        { nome: 'frango', valor: 30},
+        { nome: 'presunto', valor: 20},
+        { nome: 'milho', valor: 10},
+        { nome: 'bacon', valor: 5},
+        { nome: 'carne', valor: 15}
       ]
     }
   }
 
-  renderData = ({item}) => {
-    return (
-      <View style={styles.areaView}>
-        <Text style={styles.texto}>{item.nome}</Text>
-        <Text style={styles.texto}>{item.idade}</Text>
-      </View>
-    )
-  }
-
   render() {
+
+    let pizzasItem = this.state.pizzas.map((v, k) => {
+      return <Picker.Item key={k} value={k} label={v.nome} /> 
+    })
+
     return (
       <View style={styles.container}>
-        <FlatList data={this.state.listaData} renderItem={this.renderData} />
+        <Picker selectedValue={this.state.pizza} onValueChange={(itemValue, itemIndex) => this.setState({pizza: itemValue})}>
+          {pizzasItem}
+        </Picker>
       </View>
     );
   }
@@ -40,14 +37,6 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    height: 300,
-    backgroundColor: 'blue'
-  },
-  areaView:{
-    marginTop: 25
-  },
-  texto: {
-    fontSize: 18,
-    color: 'yellow'
+    flex: 1
   }
 })
