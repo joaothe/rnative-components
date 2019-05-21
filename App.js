@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, View, Text, Button, Modal} from 'react-native'
+import { StackNavigator } from 'react-navigation'
 
-export default class App extends Component {
+class HomePage extends Component {
+
+  static navigationOptions = {
+    title: 'Home'
+  }
 
   constructor(props) {
     super(props)
@@ -42,3 +47,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#DDD'
   }
 })
+
+const Navegador = StackNavigator({
+  Home: { screen: HomePage }
+})
+
+export default Navegador
