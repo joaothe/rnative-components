@@ -10,13 +10,25 @@ export default class App extends Component {
     }
   }
 
-  abrir = () => {}
+  abrir = () => {
+    this.setState({modalVisible: true})
+  }
+
+  fechar = () => {
+    this.setState({modalVisible: false})
+  }
 
   render() {
 
     return (
       <View style={styles.container}>
-        <Button title="Entrar" onPress={this.abrir} />
+        <Button title="Abrir" onPress={this.abrir} />
+        <Modal animationType="slide" visible={this.state.modalVisible}>
+          <View style={{backgroundColor: '#292929', flex: 1}}>
+            <Text style={{color: '#fff', fontSize: 28}}>Seja bem-vindo!</Text>
+            <Button title="Sair" onPress={this.fechar} />
+          </View>
+        </Modal>
       </View>
     );
   }
