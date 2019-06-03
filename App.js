@@ -10,7 +10,7 @@ export default class App extends Component {
       AltAnimada: new Animated.Value(50)
     }
 
-    Animated.sequence([
+    Animated.parallel([
       Animated.timing(
         this.state.LarAnimada,
         {
