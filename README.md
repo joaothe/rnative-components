@@ -6,7 +6,7 @@ environment setup: https://www.techomoro.com/how-to-install-and-setup-react-nati
 
 ### permissao dev kvm:
 
-sudo chown <username> /dev/kvm           <br />
+sudo chown username /dev/kvm           <br />
 sudo chmod o+x /dev/kvm
 
 #### react navigation initial setup:           
