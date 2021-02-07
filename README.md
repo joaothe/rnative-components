@@ -9,6 +9,11 @@ environment setup: https://www.techomoro.com/how-to-install-and-setup-react-nati
 sudo chown username /dev/kvm           <br />
 sudo chmod o+x /dev/kvm
 
+
+### problemas com emulator already using
+
+ :stop no avd manager e renicializar o android studio
+
 #### react navigation initial setup:           
  
 npm install --save react-navigation                 <br />
