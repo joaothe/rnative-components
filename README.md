@@ -1,6 +1,8 @@
 # react-native-components and notes about
 
 
+refresh page -> press r  terminal
+
 environment setup: https://www.techomoro.com/how-to-install-and-setup-react-native-on-ubuntu-18-04-1-lts-bionic-beaver/
 
 
@@ -23,6 +25,7 @@ react-native link                                   <br />
 
 biblioteca para elementos react native:         
 nativebase <br />
+uikitten
 
 
 
